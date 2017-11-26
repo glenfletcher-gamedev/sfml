@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SFML" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/debug/SFML" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Environment>
+					<Variable name="TARGET" value="debug" />
+				</Environment>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/release/SFML" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<Environment>
+					<Variable name="TARGET" value="release" />
+				</Environment>
+			</Target>
+			<Environment>
+				<Variable name="CXXFLAGS" value='&quot;-m64 -std=c++14 -mfpmath=sse -m128bit-long-double -msse3 -mmmx -mthreads -ftree-vectorize&quot;' />
+				<Variable name="SFML_SHARED" value="1" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<ExtraCommands>
+			<Add before="python sfml.py --build=obj/$(TARGET)/sfml --out=lib/ --cxx=$(TARGET_COMPILER_DIR)bin/$(TARGET_CPP) --cc=$(TARGET_COMPILER_DIR)bin/$(TARGET_CC) --target=$(TARGET) --shared=$(SFML_SHARED) --flags=$(CXXFLAGS)" />
+		</ExtraCommands>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
